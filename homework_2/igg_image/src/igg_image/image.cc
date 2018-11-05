@@ -58,9 +58,10 @@ std::vector<float> Image::ComputeHistogram(int bins) {
     histograms.reserve(bins);
 
     // Iterate through bins
+    double interval = 255.0/(double) bins;
     for (int i = 0; i < bins; i++) {
         histograms.emplace_back(std::count_if(data_.begin(), data_.end(), 
-            [i, bins](int j){return (j < (((i+1.0)/(double) bins)*255.0 + 1.0) && j >= (double) i*255.0/(double) bins);}));
+            [i, interval](int j){return (j < ((double) i + 1.0) * interval && j >= (double) i * interval);}));
     }
 
     // Normalize
@@ -70,6 +71,51 @@ std::vector<float> Image::ComputeHistogram(int bins) {
     }
 
     return histograms;
+}
+
+void Image::DownScale(int scale) {
+    // Create the downscaled image
+    int downscaled_rows = rows_/scale;
+    int downscaled_cols = cols_/scale;
+    std::vector<int> downscaled_image;
+    downscaled_image.reserve(downscaled_rows * downscaled_cols);
+    
+
+    // Iterate over image
+    for (int i = 0; i < rows_; i+=scale) {
+        for (int j = 0; j < cols_; j+=scale) {
+            downscaled_image.emplace_back(data_[i * cols_ + j]);
+        }
+    }
+
+    rows_ = downscaled_rows;
+    cols_ = downscaled_cols;
+    data_ = downscaled_image;
+}
+
+void Image::UpScale(int scale) {
+    // Create the upscaled image
+    int upscaled_rows = rows_*scale;
+    int upscaled_cols = cols_*scale;
+    std::vector<int> upscaled_image(upscaled_rows * upscaled_cols + 1, 0);
+
+    // Iterate over the image
+    for (int i = 0; i < rows_; i++) {
+        int row_jump = i * scale;
+        for (int j = 0; j < cols_; j++) {
+            int col_jump = j*scale;
+            // Fill values for upscaled image
+            for (int u = 0; u < scale; u++) {
+                for (int v = 0; v < scale; v++) {
+                    upscaled_image[(row_jump+u)*upscaled_cols + col_jump + v] = data_[i * cols_ + j];
+                }
+            }
+        }
+    }
+
+    rows_ = upscaled_rows;
+    cols_ = upscaled_cols;
+    data_ = upscaled_image;
 }
 } // namespace igg
 

@@ -30,7 +30,11 @@ class Image {
   void WriteToPgm(const std::string& file_name);
 
   // Compute the Histogram
-  std::vector<float> ComputeHistogram(int bins);  
+  std::vector<float> ComputeHistogram(int bins);
+
+  // Resizing functions
+  void DownScale(int scale);
+  void UpScale(int scale); 
 
  private:
   int rows_ = 0;
