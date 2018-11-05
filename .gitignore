@@ -1,0 +1,4 @@
+# Ignore from homework 2
+homework_2/.vscode
+homework_2/igg_image/build
+homework_2/igg_image/bin
