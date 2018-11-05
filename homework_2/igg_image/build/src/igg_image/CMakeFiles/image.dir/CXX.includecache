@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/yago/Documents/Lectures/Bonn-Modern-C++/Homework/homework_2/igg_image/src/igg_image/image.cc
+image.h
+/home/yago/Documents/Lectures/Bonn-Modern-C++/Homework/homework_2/igg_image/src/igg_image/image.h
+io_tools.h
+/home/yago/Documents/Lectures/Bonn-Modern-C++/Homework/homework_2/igg_image/src/igg_image/io_tools.h
+
+/home/yago/Documents/Lectures/Bonn-Modern-C++/Homework/homework_2/igg_image/src/igg_image/image.h
+algorithm
+-
+iostream
+-
+string
+-
+vector
+-
+
+/home/yago/Documents/Lectures/Bonn-Modern-C++/Homework/homework_2/igg_image/src/igg_image/io_tools.h
+fstream
+-
+string
+-
+vector
+-
+

@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra -fPIC -g  -rdynamic CMakeFiles/main.dir/main.cc.o  -o ../../../bin/main -Wl,-rpath,/home/yago/Documents/Lectures/Bonn-Modern-C++/Homework/homework_2/igg_image/lib ../../../lib/libimage.a ../../../lib/libio_tools.so 
