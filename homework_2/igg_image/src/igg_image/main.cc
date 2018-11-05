@@ -31,7 +31,7 @@ int main() {
     int bins = 4;
     std::vector<float> histograms = image.ComputeHistogram(bins);
 
-    // // Downscaled image
+    // Downscaled image
     std::string downscaled = "/home/yago/Documents/Lectures/Bonn-Modern-C++/bonn-c++/homework_2/igg_image/data/lena.ascii-3.pgm";
 
     image.DownScale(2);
