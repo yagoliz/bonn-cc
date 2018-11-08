@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include "igg_image/image.h"
-// #include <png++/png.hpp>
 #include "igg_image/io_strategies/png_strategy.h"
 #include "igg_image/io_strategies/ppm_strategy.h"
 
@@ -45,7 +44,7 @@ int main() {
 
 // --------------------------------------------------------
   // Time to test PPM strategy
-  std::string file_ppm = "../data/pbmlib.ascii.ppm";
+  std::string file_ppm = "../data/pbmlib.asii.ppm";
   igg::PpmIoStrategy strategy_ppm; 
 
   // Create ppm image object

@@ -38,6 +38,11 @@ namespace igg {
     // Start file reader
     std::ifstream input(file_name, std::ios_base::in);
 
+    if (!input) {
+      ImageData im;
+      return im;
+    }
+
     // Create ImageData structure and the red, green and blue vectors
     ImageData image;
 
