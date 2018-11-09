@@ -44,7 +44,7 @@ int main() {
 
 // --------------------------------------------------------
   // Time to test PPM strategy
-  std::string file_ppm = "../data/pbmlib.asii.ppm";
+  std::string file_ppm = "../data/pbmlib.ascii.ppm";
   igg::PpmIoStrategy strategy_ppm; 
 
   // Create ppm image object
@@ -61,7 +61,7 @@ int main() {
   for (int i = 0, rows = image_ppm.rows(); i < rows; i++) {
     for (int j = 0, cols = image_ppm.cols(); j < cols; j++) {
       igg::Image::Pixel p {image_ppm.at(i, j)};
-      image_ppm.at(i, j) = igg::Image::Pixel{p.red, p.green, p.blue};
+      image_ppm.at(i, j) = igg::Image::Pixel{p.red, p.blue, p.green};
     }
   }
 
