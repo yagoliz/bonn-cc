@@ -9,3 +9,8 @@ homework_3/.vscode
 homework_3/igg_image/build
 homework_3/igg_image/bin
 homework_3/igg_image/data/river*
+
+# Ignore from homework 4
+homework_4/.vscode
+homework_4/homework_4/digit_counter/build
+homework_4/homework_4/digit-counter/bin
