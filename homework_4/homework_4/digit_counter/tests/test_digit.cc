@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include <digit_counter/digit_counter.hh>
+#include <cmath>
 
 using namespace digit;
 
@@ -8,7 +9,15 @@ TEST(TestDigit, Warp) {
   double factor = 1e17;
 
   double pi_warped = Warp(pi, factor);
-  EXPECT_EQ(pi - pi_warped, 0.141593);
+  EXPECT_FALSE(std::fabs(pi - pi_warped) < 1e-2);
+}
+
+TEST(TestDigit, DontWarp) {
+  double pi = 3.14159265;
+  double factor = 1e10;
+
+  double pi_warped = Warp(pi, factor);
+  EXPECT_TRUE(std::fabs(pi - pi_warped) < 1e-2);
 }
 
 TEST(TestDigit, SignificantEqual) {
