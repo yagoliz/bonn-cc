@@ -1,4 +1,4 @@
-
+#include <memory>
 #include <string>
 #include <gtest/gtest.h>
 #include <igg_image/image.h>
@@ -7,10 +7,11 @@
 using namespace igg;
 
 TEST(TestImage, TestValidPngFile) {
-  PngIoStrategy strategy;
+  auto strategy = std::make_shared<PngIoStrategy>();
   std::string file_name = "../../data/river.png";
 
-  Image image{strategy};
+  Image image;
+  image.SetIoStrategy(strategy);
 
   EXPECT_EQ(true, image.ReadFromDisk(file_name));
   EXPECT_EQ(1600, image.rows());
@@ -18,10 +19,11 @@ TEST(TestImage, TestValidPngFile) {
 }
 
 TEST(TestImage, TestInvalidPngFile) {
-  PngIoStrategy strategy;
+  auto strategy = std::make_shared<PngIoStrategy>();
   std::string file_name = "nothing";
 
-  Image image{strategy};
+  Image image;
+  image.SetIoStrategy(strategy);
 
   EXPECT_ANY_THROW(image.ReadFromDisk(file_name));
 }

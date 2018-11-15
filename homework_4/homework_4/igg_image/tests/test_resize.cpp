@@ -1,4 +1,5 @@
 #include <string>
+#include <memory>
 #include <gtest/gtest.h>
 #include <igg_image/image.h>
 #include <igg_image/io_strategies/ppm_strategy.h>
@@ -7,10 +8,11 @@
 using namespace igg;
 
 TEST(TestImage, TestDownscalePpm) {
-  PpmIoStrategy strategy;
+  auto strategy = std::make_shared<PpmIoStrategy>();
   std::string file_name = "../../data/pbmlib.ascii.ppm";
 
-  Image image{strategy};
+  Image image;
+  image.SetIoStrategy(strategy);
   image.ReadFromDisk(file_name);
 
   image.DownScale(2);
@@ -19,10 +21,12 @@ TEST(TestImage, TestDownscalePpm) {
 }
 
 TEST(TestImage, TestUpscalePpm) {
-  PpmIoStrategy strategy;
+  auto strategy = std::make_shared<PpmIoStrategy>();
   std::string file_name = "../../data/pbmlib.ascii.ppm";
 
-  Image image{strategy};
+  Image image;
+  image.SetIoStrategy(strategy);
+
   image.ReadFromDisk(file_name);
 
   image.UpScale(2);
@@ -31,10 +35,12 @@ TEST(TestImage, TestUpscalePpm) {
 }
 
 TEST(TestImage, TestDownscalePng) {
-  PngIoStrategy strategy;
+  auto strategy = std::make_shared<PngIoStrategy>();
   std::string file_name = "../../data/river.png";
 
-  Image image{strategy};
+  Image image;
+  image.SetIoStrategy(strategy);
+
   image.ReadFromDisk(file_name);
 
   image.DownScale(2);
@@ -43,10 +49,12 @@ TEST(TestImage, TestDownscalePng) {
 }
 
 TEST(TestImage, TestUpscalePng) {
-  PngIoStrategy strategy;
+  auto strategy = std::make_shared<PngIoStrategy>();
   std::string file_name = "../../data/river.png";
 
-  Image image{strategy};
+  Image image;
+  image.SetIoStrategy(strategy);
+
   image.ReadFromDisk(file_name);
 
   image.UpScale(2);

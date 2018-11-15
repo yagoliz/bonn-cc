@@ -24,7 +24,7 @@ class Image {
   };
 
   // Constructors
-  Image(const std::shared_ptr<IoStrategy>& io_strategy){}
+  Image(){}
 
   Image(int rows, int cols) :
         rows_{rows}, cols_{cols}
@@ -51,7 +51,7 @@ class Image {
 
   // Reading & Writing Images from disk
   bool ReadFromDisk(const std::string& file_name);
-  void WriteToDisk(const std::string& file_name);
+  bool WriteToDisk(const std::string& file_name);
 
  private:
   // Private member variables

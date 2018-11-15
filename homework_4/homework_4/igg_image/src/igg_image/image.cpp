@@ -82,9 +82,9 @@ namespace igg {
   }
 
   // Write image to disk
-  void Image::WriteToDisk(const std::string& file_name) {
+  bool Image::WriteToDisk(const std::string& file_name) {
     if (!strategy_) {
-      return;
+      return false;
     }
 
     ImageData image;
@@ -105,6 +105,8 @@ namespace igg {
     strategy_->Write(file_name, image);
     std::cout << "File: " << file_name << " written successfully."
               << std::endl;
+
+    return true;
   }  
 
 } // namespace igg

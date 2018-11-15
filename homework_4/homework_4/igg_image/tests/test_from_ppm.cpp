@@ -1,4 +1,4 @@
-
+#include <memory>
 #include <string>
 #include <gtest/gtest.h>
 #include <igg_image/image.h>
@@ -7,10 +7,11 @@
 using namespace igg;
 
 TEST(TestImage, TestValidPpmFile) {
-  PpmIoStrategy strategy;
+  auto strategy = std::make_shared<PpmIoStrategy>();
   std::string file_name = "../../data/pbmlib.ascii.ppm";
 
-  Image image{strategy};
+  Image image;
+  image.SetIoStrategy(strategy);
 
   EXPECT_EQ(true, image.ReadFromDisk(file_name));
   EXPECT_EQ(300, image.rows());
@@ -23,10 +24,11 @@ TEST(TestImage, TestValidPpmFile) {
 }
 
 TEST(TestImage, TestInvalidPpmFile) {
-  PpmIoStrategy strategy;
+  auto strategy = std::make_shared<PpmIoStrategy>();
   std::string file_name = "nothing";
 
-  Image image{strategy};
+  Image image;
+  image.SetIoStrategy(strategy);
 
   EXPECT_EQ(false, image.ReadFromDisk(file_name));
 }
